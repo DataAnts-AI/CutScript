@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Video Editor Project",
+  "type": "object",
+  "required": ["version", "videoPath", "words", "segments", "deletedRanges", "language", "createdAt", "modifiedAt"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "videoPath": { "type": "string" },
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["word", "start", "end", "confidence"],
+        "properties": {
+          "word": { "type": "string" },
+          "start": { "type": "number" },
+          "end": { "type": "number" },
+          "confidence": { "type": "number" },
+          "speaker": { "type": "string" }
+        }
+      }
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "text", "words"],
+        "properties": {
+          "id": { "type": "integer" },
+          "start": { "type": "number" },
+          "end": { "type": "number" },
+          "text": { "type": "string" },
+          "words": { "$ref": "#/properties/words" },
+          "speaker": { "type": "string" }
+        }
+      }
+    },
+    "deletedRanges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "wordIndices"],
+        "properties": {
+          "id": { "type": "string" },
+          "start": { "type": "number" },
+          "end": { "type": "number" },
+          "wordIndices": { "type": "array", "items": { "type": "integer" } }
+        }
+      }
+    },
+    "language": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "modifiedAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,13 +1,33 @@
-# Python virtual environment
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+
+# Python
 venv/
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
 
-# IDE files
+# IDE / Editor
 .vscode/
 .idea/
+.cursor/
 
 # OS files
 .env
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Lock files (root only — frontend lock is committed)
+/package-lock.json
+
+# Electron build output
+dist/
+build/
+*.asar
